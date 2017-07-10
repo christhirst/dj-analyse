@@ -1,0 +1,46 @@
+
+
+Button
+<form action="{% url 'analyse:graph' 1 %}" method="post" xmlns="http://www.w3.org/1999/html">
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+<form/>
+
+
+    sidebar
+<li class=""><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
+      <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
+
+
+    blue button
+
+    <a href=" {% url 'analyse:add' %}" class="btn btn-info" role="button">Link Button</a>
+
+
+    submit button
+    <form action="submit" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+<form/>
+
+
+
+        jquery check:
+
+
+
+        $(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
+</script>
+
+
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+
+

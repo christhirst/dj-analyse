@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p>Welcome to your dashboard.</p>
+<p>Projektliste</p>
+<p>Datenbankliste</p>
+
+<a href="{% url 'analyse:index'%}">Database</a>
+
+
+{% endblock %}

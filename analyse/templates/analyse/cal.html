@@ -1,0 +1,79 @@
+{% extends "analyse/base.html" %}
+{% block title %} Index {% endblock %}
+{% block body %}
+{% load staticfiles %}
+
+    <div class="row">
+    <div class="col-xs-1">
+
+    <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav affix">
+
+        <div class="dropdown">
+  <button class="icon-chevron-right btn-link dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu ">
+    <li><a href="{% url 'analyse:graph' file_name%}">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+
+       <div class="dropdown">
+  <button class="icon-chevron-right btn-link dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu ">
+    <li><a href="{% url 'analyse:graph'%}">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+
+    </ul>
+  </div>
+
+
+    </div>
+
+
+    <div{% if toggle == "0" %} class="col-xs-11">{%  else %}  class="col-xs-6"> {% endif %}
+  <h2>Condensed Table</h2>
+  <p></p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          {% for c in data_list %}
+                    <tr>
+              {% for i in c %}
+                  <td>{{ i }}</td>
+              {% endfor %}
+                    </tr>
+          {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+    <div{% if toggle == "0" %} class="col-xs-0">{%  else %}  class="col-xs-5"> {% endif %}
+        {% if toggle == "1" %}
+            <div class="col-xs-11">
+
+    {%  endif %}
+
+    </div>
+
+    </div>
+
+
+
+
+</body>
+
+{% endblock %}
+
+

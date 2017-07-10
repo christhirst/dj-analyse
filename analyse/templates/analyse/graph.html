@@ -1,0 +1,22 @@
+{% extends "analyse/base.html" %}
+{% block title %} Index {% endblock %}
+{% block body %}
+{% load staticfiles %}
+
+
+    <title>Graph</title>
+    {{ tt }}
+<svg class="chart" width="1000" height="1000">
+<script>
+    var head = {{ head|safe }}; //unnötig
+    var url = "{{ MEDIA_URL }}{{ file_name }}";
+    $(document).ready(noVote());
+
+</script>
+
+
+<body>
+
+</body>
+
+{% endblock %}
