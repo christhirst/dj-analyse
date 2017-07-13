@@ -55,11 +55,11 @@ class DataCreate(CreateView):
         return super(DataCreate, self).form_valid(form)
 
 
-def DataAnalyse(request, toggle = 0, file_name = ""):
+def DataAnalyse(request, file_name = ""):
     gg = pd.read_csv(your_media_root+file_name, header=None).as_matrix()
     head = list(i for i in gg[0])
 
-    return render(request, 'analyse/cal.html', {'data_list': gg, 'toggle': toggle, 'file_name' : file_name, "head": head})
+    return render(request, 'analyse/cal.html', {'data_list': gg, 'file_name' : file_name, "head": head})
 
 def Graph(request, toggle = 0, file_name = ""):
     gg = pd.read_csv(your_media_root+file_name, header=None).as_matrix()
