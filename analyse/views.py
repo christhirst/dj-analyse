@@ -10,6 +10,9 @@ from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 import pandas
+from django.http import JsonResponse
+from django.core import serializers
+
 
 your_media_root = settings.MEDIA_URL
 
@@ -56,10 +59,17 @@ class DataCreate(CreateView):
 
 
 def DataAnalyse(request, file_name = ""):
-    gg = pd.read_csv(your_media_root+file_name, header=None).as_matrix()
+    gg = pd.read_csv(your_media_root+file_name, header=None, sep='\t').as_matrix()
+    if len(gg[0]) == 1:
+        gg = pd.read_csv(your_media_root + file_name, header=None).as_matrix()
     head = list(i for i in gg[0])
 
-    return render(request, 'analyse/cal.html', {'data_list': gg, 'file_name' : file_name, "head": head})
+    ggg = pd.read_csv(your_media_root + file_name, header=None)
+    head2 = ggg
+    #print(head2)
+    tt = head2.to_json()
+
+    return render(request, 'analyse/cal.html', {'data_list': gg, 'file_name' : file_name, "head": head, 'tt': tt})
 
 def Graph(request, toggle = 0, file_name = ""):
     gg = pd.read_csv(your_media_root+file_name, header=None).as_matrix()

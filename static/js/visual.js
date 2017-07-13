@@ -20,6 +20,8 @@ var line = d3.line()
     .x(function(d) { return x(d[0]); })
     .y(function(d) { return y(d[1]); });
 
+
+
     d3.tsv(url, function (d) {
 
         return d;
