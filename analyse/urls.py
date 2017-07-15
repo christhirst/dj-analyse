@@ -27,9 +27,9 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     # /music/album/add
     url(r'add/$', views.DataCreate.as_view(), name='add'),
-    url(r'^table/(?P<file_name>.+)', views.DataAnalyse, {'toggle': '0'}, name='table'),
+    url(r'^table/(?P<file_name>.+)', views.DataAnalyse, name='table'),
     url(r'^graph/charts/(?P<file_name>.+).png', plots.showimage),
-    url(r'^graph/$', views.DataAnalyse, {'toggle': '0'}, name='graph'),
+    url(r'^graph/$', views.DataAnalyse, name='graph'),
     url(r'^graph/(?P<file_name>.+)', views.Graph, {'toggle': '1'}, name='graph'),
     # /music/album/delete
     url(r'(?P<pk>[0-9]+)/delete/', views.DataDelete.as_view(), name='data-delete'),
