@@ -59,7 +59,7 @@ class DataCreate(CreateView):
 
 
 def DataAnalyse(request, file_name = ""):
-    gg = pd.read_csv(your_media_root+file_name, header=None, sep='\t').as_matrix()
+    gg = pd.read_csv(your_media_root+file_name, header=None, sep='\t',engine='python').as_matrix()
     if len(gg[0]) == 1:
         gg = pd.read_csv(your_media_root + file_name, header=None).as_matrix()
     head = list(i for i in gg[0])
