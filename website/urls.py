@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^books/', include('books.urls')),
     url(r'^analyse/', include('analyse.urls')),
     url(r'^account/', include('account.urls')),
-    url(r'^projects/', include('account.urls')),
+    url(r'^projects/', include('projects.urls')),
 ]
 
 if settings.DEBUG:

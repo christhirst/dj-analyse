@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'books',
     'analyse',
     'account',
-    'courses'
+    'courses',
+    'projects'
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = MEDIA_ROOT+'/'
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
