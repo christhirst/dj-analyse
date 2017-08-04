@@ -8,14 +8,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="D3byEX 1.1>
+
 </head>
+
 <body>
+
 <script src="http://d3js.org/d3.v3.min.js"charset="utf-8"></script>
 <script>
-d3.select('body')
-.append('h1')
-.text('Hello World!');
+//start,end,id,duration
+var id = 1;
+var position = 0;
+var projectdata = [[1, 0, 3, 4][3, 0, 3, 4]];
+var totalHeight = 1280;
+var totalWidth = 1024;
+var margin = { top: 10, right: 10, bottom: 10, left: 50 };
+var svg = d3.select('body')
+.append('svg')
+.attr({ width: totalWidth+20, height: totalHeight+20 });
+
+svg.append("rect").attr({
+        width: 100,
+        height: 20,
+        "transform": "translate(" + position + "," + margin.top + ")",
+        fill: "grey",
+        stroke: "black",
+        "stroke-width": 1
+    }).on('click', function() {
+        id += 1;
+        position += 120;
+        svg.append("rect").attr({
+        id: id,
+        width: 100,
+        height: 20,
+        fill: "blue",
+        stroke: "black",
+        "stroke-width": 1,
+        "transform": "translate(" + position + "," + margin.top + ")"
+    })
+    })
+;
+
+
+
+var projlineGroup = svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+
+
 </script>
 </body>
 </html>

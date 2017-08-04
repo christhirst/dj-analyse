@@ -63,18 +63,16 @@ def DataAnalyse(request, file_name = ""):
     if len(gg[0]) == 1:
         gg = pd.read_csv(your_media_root + file_name, header=None).as_matrix()
     head = list(i for i in gg[0])
-    ggg = pd.read_csv(your_media_root + file_name, header=None)
+    ggg = pd.read_csv(your_media_root + file_name, header=None, sep='\t',engine='python')
     head2 = ggg
-    #print(head2)
     tt = head2.to_json()
     return render(request, 'analyse/cal.html', {'data_list': gg, 'file_name' : file_name, "head": head, 'tt': tt})
 
 def Graph(request, toggle = 0, file_name = ""):
     gg = pd.read_csv(your_media_root+file_name, header=None).as_matrix()
-    ggg = pd.read_csv(your_media_root + file_name, header=None)
+    ggg = pd.read_csv(your_media_root + file_name, header=None, sep='\t',engine='python')
     head = list(i for i in gg[0])
     #print(len(ggg))
-    head2 = ggg[0][:1]
-    print(head2)
+    head2 = ggg[0][:5]
     tt = head2.to_json()
     return render(request, 'analyse/graph.html', {'data_list': gg, 'file_name': file_name, "head": head, 'tt': tt})

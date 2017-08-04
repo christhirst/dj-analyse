@@ -9,8 +9,17 @@
 <svg class="chart" width="1000" height="1000">
 <script>
     //var head = {{ head|safe }}; //unnötig
+    var data2 = {{ tt }}
     var url = "{{ MEDIA_URL }}{{ file_name }}";
     $(document).ready(noVote());
+var ee = d3.tsv(url, function (error, d) {console.log(d[0]);});
+
+
+
+
+
+
+
 
 </script>
 
