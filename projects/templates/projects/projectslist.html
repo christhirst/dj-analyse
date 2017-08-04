@@ -34,6 +34,10 @@ svg.append("rect").attr({
         stroke: "black",
         "stroke-width": 1
     }).on('click', function() {
+        myFunction();
+    });
+
+function myFunction() {
         id += 1;
         position += 120;
         svg.append("rect").attr({
@@ -44,9 +48,19 @@ svg.append("rect").attr({
         stroke: "black",
         "stroke-width": 1,
         "transform": "translate(" + position + "," + margin.top + ")"
+    }).on('click', function() {
+    myFunction();
     })
-    })
-;
+}
+
+
+
+
+
+
+
+
+
 
 
 
