@@ -16,15 +16,28 @@
 <script src="http://d3js.org/d3.v3.min.js"charset="utf-8"></script>
 <script>
 //start,end,id,duration
-var id = 1;
+var id = "1.0";
 var position = 0;
-var projectdata = [[1, 0, 3, 4][3, 0, 3, 4]];
+var idList = [];
+var idList2 = [];
 var totalHeight = 1280;
 var totalWidth = 1024;
+var vert = 0;
 var margin = { top: 10, right: 10, bottom: 10, left: 50 };
 var svg = d3.select('body')
 .append('svg')
 .attr({ width: totalWidth+20, height: totalHeight+20 });
+var duration = 1;
+var re = new RegExp(/b{-1,9}/);
+var idSave;
+
+function findId(obj) {
+
+    //console.log(obj.key)
+    //console.log(idSave)
+    return obj.key === idSave+".0";
+}
+
 
 svg.append("rect").attr({
         width: 100,
@@ -34,12 +47,15 @@ svg.append("rect").attr({
         stroke: "black",
         "stroke-width": 1
     }).on('click', function() {
-        myFunction();
+
+        rectPart();
     });
 
-function myFunction() {
-        id += 1;
+function rectPart() {
+console.log(id);
+        //idList.push(this.id);
         position += 120;
+        vert += 10;
         svg.append("rect").attr({
         id: id,
         width: 100,
@@ -47,20 +63,56 @@ function myFunction() {
         fill: "blue",
         stroke: "black",
         "stroke-width": 1,
-        "transform": "translate(" + position + "," + margin.top + ")"
+        "transform": "translate(" + position + "," + vert + ")"
     }).on('click', function() {
-    myFunction();
+//console.log(this.id)
+
+
+            //console.log(idList2)
+            //console.log(this.id)
+        idSave = this.id
+            console.log(idList2.find(findId))
+        if (idList2.find(findId) !== undefined) {
+            var lastDigit = 1;
+
+            var newId = this.id + ".0"
+            var unitNumber = newId.lastIndexOf('.');
+
+
+            while ((idList2.filter(x => (x.key) === newId)).length !== 0) {console.log("ssssss")
+
+            newId = newId.slice(0, unitNumber)+ "." + (parseInt(newId.slice(unitNumber+1))+1);
+            //console.log(idList2.filter(x => (x.key) === newId));
+
+            //console.log(id)
+            }
+console.log(newId);
+            //console.log(id)
+            id = newId
+            idList2.push({
+    key:   id,
+    value: "gggggg"
+})
+        }
+        else {
+            id = (this.id+".0");
+            idList2.push({
+    key:   id,
+    value: "the value"
+})
+        }
+        //console.log(idList2)
+//console.log(inventory.find(findCherries));
+        //console.log(idList2)
+        //console.log('ca.n.a.ll'.lastIndexOf('.'))
+            //console.log('ca.n.a.ll'.slice(6))
+        //console.log(this.id)
+        //console.log(idList.indexOf(this.id))
+
+
+    rectPart();
     })
 }
-
-
-
-
-
-
-
-
-
 
 
 
